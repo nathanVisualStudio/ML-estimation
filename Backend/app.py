@@ -13,8 +13,11 @@ template_dir = os.path.join(base_dir, 'templates')
 app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
 CORS(app)
 
-model = joblib.load("model.pkl")
-scaler = joblib.load("scaler.pkl")
+model_path = os.path.join(os.path.dirname(__file__), 'model.pkl')
+scaler_path = os.path.join(os.path.dirname(__file__), 'scaler.pkl')
+
+model = joblib.load(model_path)
+scaler = joblib.load(scaler_path)
 
 #Colonnes pour faire correspondre les noms anglais et FR.
 colonnes = ["Surface_m2", "Nb_Chambres", "Distance_Centre"]
